@@ -12,7 +12,10 @@ export default [
         ...vitest.configs.recommended,
         languageOptions: {
             ecmaVersion: 2020,
-            globals: globals.browser,
+            globals: {
+                ...globals.browser,
+                ...vitest.environments.env.globals,
+            },
             parserOptions: {
                 ecmaVersion: "latest",
                 ecmaFeatures: { jsx: true },
