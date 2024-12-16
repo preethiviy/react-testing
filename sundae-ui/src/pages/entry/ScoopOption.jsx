@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import { useOrderDetails } from "../../contexts/OrderDetails";
 
 export default function ScoopOptions({ name, imagePath }) {
+    const { updateItemCount } = useOrderDetails();
     const [isValid, setIsValid] = useState(true);
     const handleChange = (event) => {
         const currentValue = event.target.value;
@@ -21,6 +22,7 @@ export default function ScoopOptions({ name, imagePath }) {
 
         // adjust scoop count with currentValue if it's valid; 0 if it's not
         const newValue = valueIsValid ? parseInt(currentValue) : 0;
+        updateItemCount(name, newValue, "scoops");
     };
 
     return (

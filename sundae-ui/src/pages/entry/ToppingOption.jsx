@@ -3,7 +3,10 @@ import Form from "react-bootstrap/Form";
 import { useOrderDetails } from "../../contexts/OrderDetails";
 
 export default function ToppingOption({ name, imagePath }) {
-    const handleChange = (e) => {};
+    const { updateItemCount } = useOrderDetails();
+    const handleChange = (e) => {
+        updateItemCount(name, e.target.checked ? 1 : 0, "toppings");
+    };
 
     return (
         <Col xs={6} sm={4} md={3} lg={2} style={{ textAlign: "center" }}>

@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import OrderEntry from "./pages/entry/OrderEntry";
 import OrderConfirmation from "./pages/confirmation/OrderConfirmation";
 import OrderSummary from "./pages/summary/OrderSummary";
+import { OrderDetailsProvider } from "./contexts/OrderDetails";
 
 function App() {
     // orderPhase needs to be 'inProgress', 'review' or 'completed'
@@ -22,9 +23,9 @@ function App() {
         default:
     }
     return (
-        <div>
+        <OrderDetailsProvider>
             <Container>{<Component setOrderPhase={setOrderPhase} />}</Container>
-        </div>
+        </OrderDetailsProvider>
     );
 }
 
